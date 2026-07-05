@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalWallet.Modules.Wallets.Domain\DigitalWallet.Modules.Wallets.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DigitalWallet.BuildingBlocks.Application\DigitalWallet.BuildingBlocks.Application.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

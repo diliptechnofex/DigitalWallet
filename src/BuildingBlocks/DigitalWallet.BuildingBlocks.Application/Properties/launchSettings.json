@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DigitalWallet.BuildingBlocks.Application": {
+      "commandName": "Project",
+      "workingDirectory": "E:\\Practise\\DigitalWallet\\src\\DigitalWallet.Api"
+    }
+  }
+}

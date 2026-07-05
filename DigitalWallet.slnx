@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/DigitalWallet.BuildingBlocks.Application/DigitalWallet.BuildingBlocks.Application.csproj" />
+    <Project Path="src/BuildingBlocks/DigitalWallet.BuildingBlocks.Domain/DigitalWallet.BuildingBlocks.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Wallets/">
+    <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Application/DigitalWallet.Modules.Wallets.Application.csproj" />
+    <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Domain/DigitalWallet.Modules.Wallets.Domain.csproj" />
+  </Folder>
+  <Project Path="src/DigitalWallet.Api/DigitalWallet.Api.csproj" Id="39e0f280-7926-4e6e-95eb-6f0ba8f597e1" />
+</Solution>

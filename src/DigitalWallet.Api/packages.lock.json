@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Microsoft.AspNetCore.OpenApi": {
+        "type": "Direct",
+        "requested": "[10.0.8, )",
+        "resolved": "10.0.8",
+        "contentHash": "cw24xHE2QaWwyEG9GQwFbjboyabub6Vd80DIItUGENzcQOa/BEnTrXsg2GADqWTmY/3ycqk9ToLGjgvF/VRlGA==",
+        "dependencies": {
+          "Microsoft.OpenApi": "2.0.0"
+        }
+      },
+      "Microsoft.OpenApi": {
+        "type": "Direct",
+        "requested": "[2.9.0, )",
+        "resolved": "2.9.0",
+        "contentHash": "uS2awDkgUvVhd735HEcNcOQdwbIDCAK3V1QzgWoszd/FPDLLVv9eF+fImmdJiGLIKKWJv2DMJQ7OSR9gYLd+uw=="
+      },
+      "digitalwallet.buildingblocks.application": {
+        "type": "Project",
+        "dependencies": {
+          "DigitalWallet.BuildingBlocks.Domain": "[1.0.0, )"
+        }
+      },
+      "digitalwallet.buildingblocks.domain": {
+        "type": "Project"
+      },
+      "digitalwallet.modules.wallets.application": {
+        "type": "Project",
+        "dependencies": {
+          "DigitalWallet.BuildingBlocks.Application": "[1.0.0, )",
+          "DigitalWallet.Modules.Wallets.Domain": "[1.0.0, )"
+        }
+      },
+      "digitalwallet.modules.wallets.domain": {
+        "type": "Project",
+        "dependencies": {
+          "DigitalWallet.BuildingBlocks.Domain": "[1.0.0, )"
+        }
+      },
+      "digitalwallet.modules.wallets.infrastructure": {
+        "type": "Project",
+        "dependencies": {
+          "DigitalWallet.Modules.Wallets.Application": "[1.0.0, )",
+          "DigitalWallet.Modules.Wallets.Domain": "[1.0.0, )"
+        }
+      },
+      "digitalwallet.modules.wallets.presentation": {
+        "type": "Project",
+        "dependencies": {
+          "DigitalWallet.Modules.Wallets.Application": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}
