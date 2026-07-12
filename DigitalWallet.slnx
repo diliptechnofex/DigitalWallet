@@ -8,6 +8,14 @@
   <Folder Name="/src/Modules/Wallets/">
     <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Application/DigitalWallet.Modules.Wallets.Application.csproj" />
     <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Domain/DigitalWallet.Modules.Wallets.Domain.csproj" />
+    <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Infrastructure/DigitalWallet.Modules.Wallets.Infrastructure.csproj" />
+    <Project Path="src/Modules/Wallets/DigitalWallet.Modules.Wallets.Presentation/DigitalWallet.Modules.Wallets.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/src/Tests/">
+    <Project Path="tests/DigitalWallet.Api.IntegrationTests/DigitalWallet.Api.IntegrationTests.csproj" />
+    <Project Path="tests/DigitalWallet.Api.UnitTests/DigitalWallet.Api.UnitTests.csproj" />
+    <Project Path="tests/DigitalWallet.ArchitectureTests/DigitalWallet.ArchitectureTests.csproj" />
+    <Project Path="tests/DigitalWallet.Modules.Wallets.Infrastructure.IntegrationTests/DigitalWallet.Modules.Wallets.Infrastructure.IntegrationTests.csproj" Id="39fcaa71-1ebf-48f6-9c0f-22762310a0be" />
   </Folder>
   <Project Path="src/DigitalWallet.Api/DigitalWallet.Api.csproj" Id="39e0f280-7926-4e6e-95eb-6f0ba8f597e1" />
 </Solution>

@@ -33,6 +33,7 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
                     Currency: Currency,
                     OccurredAtUtc: openedAtUtc));
         }
+      
 
         public CustomerId CustomerId { get; private set; }
 
@@ -51,6 +52,8 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
         public DateTimeOffset? ActivatedAtUtc { get; private set; }
 
         public DateTimeOffset? SuspendedAtUtc { get; private set; }
+
+        public uint Version { get; private set; }
 
         public DateTimeOffset? ClosedAtUtc { get; private set; }
 
@@ -95,13 +98,9 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
                     OccurredAtUtc: utcTimestamp));
         }
 
-        public void Suspend(
-            WalletSuspensionReason reason,
-            DateTimeOffset occurredAtUtc)
+        public void Suspend(WalletSuspensionReason reason, DateTimeOffset occurredAtUtc)
         {
-            EnsureStatus(
-                WalletStatus.Active,
-                "Only an active wallet can be suspended.");
+            EnsureStatus(WalletStatus.Active, "Only an active wallet can be suspended.");
 
             ArgumentNullException.ThrowIfNull(reason);
 
@@ -121,9 +120,7 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
 
         public void Resume(DateTimeOffset occurredAtUtc)
         {
-            EnsureStatus(
-                WalletStatus.Suspended,
-                "Only a suspended wallet can be resumed.");
+            EnsureStatus(WalletStatus.Suspended, "Only a suspended wallet can be resumed.");
 
             var utcTimestamp = NormalizeUtc(occurredAtUtc);
 
@@ -131,11 +128,10 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
             SuspensionReason = null;
             SuspendedAtUtc = null;
 
-            RaiseDomainEvent(
-                new WalletResumedDomainEvent(
-                    EventId: Guid.NewGuid(),
-                    WalletId: Id,
-                    OccurredAtUtc: utcTimestamp));
+            RaiseDomainEvent(new WalletResumedDomainEvent(
+                             EventId: Guid.NewGuid(),
+                             WalletId: Id,
+                             OccurredAtUtc: utcTimestamp));
         }
 
         public void Close(DateTimeOffset occurredAtUtc)
@@ -160,22 +156,17 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
                     OccurredAtUtc: utcTimestamp));
         }
 
-        private void EnsureStatus(
-            WalletStatus requiredStatus,
-            string message)
+        private void EnsureStatus(WalletStatus requiredStatus, string message)
         {
             if (Status == requiredStatus)
             {
                 return;
             }
 
-            throw new DomainRuleViolationException(
-                "wallet.invalid_status_transition",
-                $"{message} Current status is {Status}.");
+            throw new DomainRuleViolationException("wallet.invalid_status_transition", $"{message} Current status is {Status}.");
         }
 
-        private static DateTimeOffset NormalizeUtc(
-            DateTimeOffset value)
+        private static DateTimeOffset NormalizeUtc(DateTimeOffset value)
         {
             return value.ToUniversalTime();
         }

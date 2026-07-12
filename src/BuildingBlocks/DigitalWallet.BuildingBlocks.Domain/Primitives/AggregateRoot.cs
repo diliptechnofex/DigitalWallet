@@ -5,8 +5,7 @@ using System.Text;
 
 namespace DigitalWallet.BuildingBlocks.Domain.Primitives
 {
-    public abstract class AggregateRoot<TId> : Entity<TId>
-     where TId : notnull
+    public abstract class AggregateRoot<TId> : Entity<TId> where TId : notnull
     {
         private readonly List<IDomainEvent> _domainEvents = [];
 
@@ -14,16 +13,13 @@ namespace DigitalWallet.BuildingBlocks.Domain.Primitives
         {
         }
 
-        protected AggregateRoot(TId id)
-            : base(id)
+        protected AggregateRoot(TId id) : base(id)
         {
         }
 
-        public IReadOnlyCollection<IDomainEvent> DomainEvents =>
-            _domainEvents;
+        public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents;
 
-        protected void RaiseDomainEvent(
-            IDomainEvent domainEvent)
+        protected void RaiseDomainEvent(IDomainEvent domainEvent)
         {
             ArgumentNullException.ThrowIfNull(domainEvent);
 

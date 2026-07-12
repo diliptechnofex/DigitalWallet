@@ -2,10 +2,12 @@ using System.Reflection;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using DigitalWallet.Api.Health;
+using DigitalWallet.Modules.Wallets.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddWalletsInfrastructure(builder.Configuration);
 
 builder.Services
     .AddHealthChecks()
