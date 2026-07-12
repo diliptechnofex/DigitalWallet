@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: digitalwallet-postgres
+    environment:
+      POSTGRES_DB: digitalwalletdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: technofex@123
+    ports:
+      - "5432:5432"
