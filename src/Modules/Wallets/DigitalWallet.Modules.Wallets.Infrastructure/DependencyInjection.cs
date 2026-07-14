@@ -1,4 +1,5 @@
-﻿using DigitalWallet.Modules.Wallets.Application.Repository;
+﻿using DigitalWallet.Modules.Wallets.Application;
+using DigitalWallet.Modules.Wallets.Application.Repository;
 using DigitalWallet.Modules.Wallets.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,8 @@ namespace DigitalWallet.Modules.Wallets.Infrastructure
     {
         public static IServiceCollection AddWalletsInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddWalletsApplication();
+                
             var connectionString =
                 configuration.GetConnectionString("WalletsDatabase")
                 ?? throw new InvalidOperationException(
