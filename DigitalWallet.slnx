@@ -15,6 +15,7 @@
     <Project Path="tests/DigitalWallet.Api.IntegrationTests/DigitalWallet.Api.IntegrationTests.csproj" />
     <Project Path="tests/DigitalWallet.Api.UnitTests/DigitalWallet.Api.UnitTests.csproj" />
     <Project Path="tests/DigitalWallet.ArchitectureTests/DigitalWallet.ArchitectureTests.csproj" />
+    <Project Path="tests/DigitalWallet.Modules.Wallet.Application.UnitTest/DigitalWallet.Modules.Wallet.Application.UnitTest.csproj" Id="15431d8f-c42a-4506-aa06-c2f6dec95db9" />
     <Project Path="tests/DigitalWallet.Modules.Wallets.Infrastructure.IntegrationTests/DigitalWallet.Modules.Wallets.Infrastructure.IntegrationTests.csproj" Id="39fcaa71-1ebf-48f6-9c0f-22762310a0be" />
   </Folder>
   <Project Path="src/DigitalWallet.Api/DigitalWallet.Api.csproj" Id="39e0f280-7926-4e6e-95eb-6f0ba8f597e1" />
