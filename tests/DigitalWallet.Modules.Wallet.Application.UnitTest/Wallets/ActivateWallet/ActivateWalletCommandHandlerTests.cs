@@ -153,8 +153,7 @@ namespace DigitalWallet.Modules.Wallets.Application.UnitTest.Wallets.ActivateWal
         {
             public int SaveChangesCount { get; private set; }
 
-            public Task<int> SaveChangesAsync(
-                CancellationToken cancellationToken)
+            public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
             {
                 SaveChangesCount++;
 

@@ -6,7 +6,5 @@ using System.Text;
 
 namespace DigitalWallet.Modules.Wallets.Application.Wallets.ActivateWallet
 {
-    public sealed record ActivateWalletCommand(
-    Guid WalletId)
-    : IRequest<Result<ActivateWalletResponse>>;
+    public sealed record ActivateWalletCommand(Guid WalletId) : IRequest<Result<ActivateWalletResponse>>;
 }
