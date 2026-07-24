@@ -14,8 +14,8 @@ namespace DigitalWallet.Api.IntegrationTests
             new PostgreSqlBuilder()
                 .WithImage("postgres:17-alpine")
                 .WithDatabase("digitalwallet_api_tests")
-                .WithUsername("wallet_app")
-                .WithPassword("wallet_password")
+                .WithUsername("postgres")
+                .WithPassword("technofex@123")
                 .Build();
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
