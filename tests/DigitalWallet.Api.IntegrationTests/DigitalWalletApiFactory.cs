@@ -1,10 +1,12 @@
 ﻿using DigitalWallet.Modules.Wallets.Infrastructure.Persistence;
-using Testcontainers.PostgreSql;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Testcontainers.PostgreSql;
 
 namespace DigitalWallet.Api.IntegrationTests
 {
@@ -20,14 +22,16 @@ namespace DigitalWallet.Api.IntegrationTests
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            builder.ConfigureAppConfiguration(configurationBuilder =>
+            builder.UseEnvironment("Testing");
+
+            builder.ConfigureTestServices(services =>
             {
-                configurationBuilder.AddInMemoryCollection(
-                    new Dictionary<string, string?>
-                    {
-                        ["ConnectionStrings:WalletsDatabase"] =
-                            _postgres.GetConnectionString()
-                    });
+                services.RemoveAll<DbContextOptions<WalletsDbContext>>();
+
+                services.AddDbContext<WalletsDbContext>(options =>
+                {
+                    options.UseNpgsql(_postgres.GetConnectionString());
+                });
             });
         }
 
