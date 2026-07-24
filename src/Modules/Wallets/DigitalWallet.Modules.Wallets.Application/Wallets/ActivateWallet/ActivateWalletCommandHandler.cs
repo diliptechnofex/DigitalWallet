@@ -15,41 +15,31 @@ namespace DigitalWallet.Modules.Wallets.Application.Wallets.ActivateWallet
     TimeProvider timeProvider)
     : IRequestHandler<ActivateWalletCommand, Result<ActivateWalletResponse>>
     {
-        public async Task<Result<ActivateWalletResponse>> Handle(
-            ActivateWalletCommand request,
-            CancellationToken cancellationToken)
+        public async Task<Result<ActivateWalletResponse>> Handle(ActivateWalletCommand request, CancellationToken cancellationToken)
         {
             var walletId = WalletId.From(request.WalletId);
 
-            var wallet = await walletRepository.GetByIdAsync(
-                walletId,
-                cancellationToken);
+            var wallet = await walletRepository.GetByIdAsync(walletId, cancellationToken);
 
             if (wallet is null)
             {
-                return Result<ActivateWalletResponse>.Failure(
-                    WalletErrors.NotFound());
+                return Result<ActivateWalletResponse>.Failure(WalletErrors.NotFound());
             }
 
             try
             {
-                wallet.Activate(
-                    timeProvider.GetUtcNow());
+                wallet.Activate(timeProvider.GetUtcNow());
             }
             catch (DomainRuleViolationException exception)
             {
-                return Result<ActivateWalletResponse>.Failure(
-                    WalletErrors.InvalidStateTransition(
-                        exception.Message));
+                return Result<ActivateWalletResponse>.Failure(WalletErrors.InvalidStateTransition(exception.Message));
             }
 
-            await unitOfWork.SaveChangesAsync(
-                cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
-            var response = new ActivateWalletResponse(
-                WalletId: wallet.Id.Value,
-                Status: wallet.Status.ToString(),
-                ActivatedAtUtc: wallet.ActivatedAtUtc);
+            var response = new ActivateWalletResponse(WalletId: wallet.Id.Value,
+                                                      Status: wallet.Status.ToString(),
+                                                      ActivatedAtUtc: wallet.ActivatedAtUtc);
 
             return Result<ActivateWalletResponse>.Success(response);
         }

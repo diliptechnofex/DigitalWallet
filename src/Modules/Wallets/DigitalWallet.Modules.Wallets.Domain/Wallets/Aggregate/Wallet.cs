@@ -82,9 +82,7 @@ namespace DigitalWallet.Modules.Wallets.Domain.Wallets.Aggregate
 
         public void Activate(DateTimeOffset occurredAtUtc)
         {
-            EnsureStatus(
-                WalletStatus.PendingActivation,
-                "Only a pending wallet can be activated.");
+            EnsureStatus(WalletStatus.PendingActivation,"Only a pending wallet can be activated.");
 
             var utcTimestamp = NormalizeUtc(occurredAtUtc);
 
